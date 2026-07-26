@@ -3,203 +3,273 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Transparency Check — SRA website compliance for small law firms</title>
-<meta name="description" content="A fixed-fee check of your firm's website against the SRA Transparency Rules. £149, and nothing to pay if there is nothing to find.">
+<title>Transparency Check | SRA website compliance for law firms</title>
+<meta name="description" content="A fixed-fee review of your firm's website against the SRA Transparency Rules. £149 per firm. Nothing to pay if the review finds nothing.">
 <meta name="color-scheme" content="light">
 <style>
   :root{
-    --ink:#10151f;
-    --navy:#1b2a4a;
-    --brass:#8c6f3f;
-    --paper:#fbfaf7;
-    --paper-2:#f5f2ea;
-    --muted:#4a5163;
-    --rule:#ded8cc;
-    --rule-soft:#e9e4d9;
-    --flag:#8a2f2a;
-    --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
-    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --ink:#111722;
+    --navy:#16233d;
+    --navy-2:#1e3055;
+    --brass:#8a6a34;
+    --paper:#fdfcfa;
+    --stone:#f2efe9;
+    --muted:#4c5464;
+    --rule:#d9d3c7;
+    --hair:#e8e3d9;
+    --flag:#8a2b25;
+    --green:#2f5d3a;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0; background:var(--paper); color:var(--ink);
-    font:400 18px/1.68 var(--serif);
-    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  }
-  .wrap{max-width:41rem; margin:0 auto; padding:0 1.5rem}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+  .bleed{width:100%}
+  .inner{max-width:1180px;margin:0 auto;padding:0 40px}
 
-  /* ---- masthead ---------------------------------------------------- */
-  header{padding:4.5rem 0 0}
-  .mark{
-    font:600 0.875rem/1 var(--sans);
-    letter-spacing:0.19em; text-transform:uppercase; color:var(--navy);
-  }
-  .mark-rule{
-    height:2px; background:var(--brass); margin:0.9rem 0 0;
-    transform-origin:left center; transform:scaleX(1);
-  }
-  @media (prefers-reduced-motion:no-preference){
-    .mark-rule{animation:draw 1100ms cubic-bezier(.16,1,.3,1) both}
-    @keyframes draw{from{transform:scaleX(0)} to{transform:scaleX(1)}}
-  }
+  /* masthead */
+  .topbar{border-bottom:1px solid var(--rule);background:#fff}
+  .topbar .inner{display:flex;align-items:center;justify-content:space-between;
+                 gap:24px;height:68px}
+  .brand{font:600 15px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;
+         color:var(--navy)}
+  .topbar a{color:var(--navy);text-decoration:none;font-size:15px;font-weight:600}
+  .topbar a:hover{color:var(--brass);text-decoration:underline;text-underline-offset:4px}
 
-  h1{
-    font:400 clamp(2.2rem,5.6vw,3.1rem)/1.14 var(--serif);
-    letter-spacing:-0.022em; margin:2.6rem 0 0; text-wrap:balance;
-  }
-  .lede{
-    font-size:1.28rem; color:var(--muted); margin:1.1rem 0 0; max-width:34rem;
-    text-wrap:pretty;
-  }
+  /* hero */
+  .hero{background:var(--stone);border-bottom:1px solid var(--rule)}
+  .hero .inner{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+               gap:72px;padding-top:84px;padding-bottom:84px;align-items:start}
+  h1{font:400 clamp(34px,4.1vw,52px)/1.1 var(--serif);letter-spacing:-.02em;margin:0;
+     color:var(--navy);text-wrap:balance}
+  .hero p{margin:22px 0 0;font-size:19px;line-height:1.55;color:var(--muted);max-width:34em}
+  .facts{border-top:2px solid var(--brass);margin-top:6px}
+  .facts dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:0}
+  .facts dt{padding:15px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--muted)}
+  .facts dd{padding:15px 0;border-bottom:1px solid var(--rule);margin:0;text-align:right;
+            font:600 17px/1.3 var(--sans);color:var(--navy)}
 
-  h2{
-    font:600 0.875rem/1.3 var(--sans); letter-spacing:0.13em; text-transform:uppercase;
-    color:var(--brass); margin:4rem 0 1rem;
-  }
-  h2 + p, h2 + ul, h2 + .specimen{margin-top:0}
+  /* sections */
+  section{border-bottom:1px solid var(--hair)}
+  section .inner{padding:64px 40px}
+  .kicker{font:600 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+          color:var(--brass);margin:0 0 26px}
+  h2{font:400 30px/1.2 var(--serif);letter-spacing:-.015em;color:var(--navy);margin:0 0 18px}
+  p{margin:0 0 16px;max-width:62ch}
+  .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px}
 
-  p{margin:0 0 1.1rem; max-width:38rem}
-  ul{margin:0 0 1.1rem; padding-left:1.15rem; max-width:38rem}
-  li{margin-bottom:0.5rem}
-  li::marker{color:var(--brass)}
-  strong{font-weight:600}
-  a{color:var(--navy); text-underline-offset:3px; text-decoration-thickness:1px}
-  a:hover{color:var(--brass)}
-  a:focus-visible{outline:2px solid var(--navy); outline-offset:3px; border-radius:2px}
+  /* rules table */
+  table{width:100%;border-collapse:collapse;margin:0}
+  th,td{text-align:left;padding:16px 20px 16px 0;border-bottom:1px solid var(--hair);
+        vertical-align:top}
+  th{font:600 13px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;
+     color:var(--muted);padding-bottom:12px;border-bottom:1px solid var(--rule)}
+  td.rule-no{white-space:nowrap;font-weight:600;color:var(--navy);width:1%;padding-right:32px}
+  td p{margin:0;font-size:16px;color:var(--muted)}
 
-  main{padding-bottom:1rem}
+  /* specimen */
+  .report{border:1px solid var(--rule);background:#fff}
+  .report-head{display:flex;align-items:center;gap:16px;padding:16px 24px;
+               border-bottom:1px solid var(--rule);background:#fcfbf9}
+  .report-head .id{font:600 14px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;
+                   color:var(--navy)}
+  .badge{margin-left:auto;font:600 12px/1 var(--sans);letter-spacing:.12em;
+         text-transform:uppercase;padding:7px 11px;border:1px solid currentColor}
+  .badge.fail{color:var(--flag)}
+  .badge.pass{color:var(--green)}
+  .report-body{padding:22px 24px}
+  .report-body p{margin:0 0 14px;max-width:none}
+  .report-body p:last-child{margin:0}
+  .count{display:flex;gap:28px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--hair);
+         font-size:15px;color:var(--muted)}
+  .count b{color:var(--ink)}
 
-  /* ---- the specimen finding ---------------------------------------- */
-  .specimen{
-    border:1px solid var(--rule); background:#fff; border-radius:3px;
-    padding:1.4rem 1.5rem; margin:0 0 1.3rem;
-    box-shadow:0 2px 10px rgba(16,21,31,.05);
-  }
-  .specimen-head{
-    display:flex; flex-wrap:wrap; gap:0.6rem 1rem; align-items:baseline;
-    padding-bottom:0.8rem; border-bottom:1px solid var(--rule-soft); margin-bottom:0.9rem;
-  }
-  .rule-id{font:600 0.875rem/1 var(--sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--navy)}
-  .verdict{
-    font:600 0.875rem/1 var(--sans); letter-spacing:0.11em; text-transform:uppercase;
-    color:var(--flag); margin-left:auto;
-  }
-  .specimen p{margin:0}
-  .evidence{
-    font:400 0.875rem/1.62 var(--sans); color:var(--muted);
-    margin:0.75rem 0 0; padding-left:0.9rem; border-left:1px solid var(--brass);
-  }
-  .evidence b{color:var(--ink); font-weight:600}
+  /* price band */
+  .price{background:var(--navy);color:#fff;border:0}
+  .price .inner{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;
+                padding:56px 40px}
+  .price .amount{font:400 62px/1 var(--serif);letter-spacing:-.02em}
+  .price h2{color:#fff;margin:0 0 10px;font-size:26px}
+  .price p{color:#c9d1e0;margin:0;max-width:56ch}
+  .price a{color:#fff;font-weight:600}
 
-  /* ---- price ------------------------------------------------------- */
-  .price-block{
-    margin:1.4rem 0 0; padding:1.5rem 1.6rem;
-    background:var(--paper-2); border:1px solid var(--rule); border-radius:3px;
-  }
-  .fee{font:400 2.3rem/1 var(--serif); letter-spacing:-0.02em; color:var(--navy)}
-  .fee-note{margin:0.6rem 0 0; font-size:0.875rem; color:var(--muted)}
+  ol.steps{margin:0;padding:0;list-style:none;counter-reset:s}
+  ol.steps li{counter-increment:s;padding:0 0 20px 46px;position:relative;max-width:60ch}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:1px;
+    font:600 13px/22px var(--sans);width:22px;height:22px;text-align:center;
+    color:var(--brass);border:1px solid var(--brass);border-radius:50%}
 
-  .contact{
-    margin:3.2rem 0 0; padding:1.6rem 0 0; border-top:2px solid var(--brass);
-  }
-  .contact a{font-size:1.28rem; font-weight:600}
+  footer{background:#fff}
+  footer .inner{padding:40px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);
+                gap:56px}
+  footer p{font-size:15px;color:var(--muted);margin:0 0 10px}
+  footer a{color:var(--navy)}
+  a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
 
-  footer{
-    margin:4rem 0 0; padding:1.4rem 0 3.5rem; border-top:1px solid var(--rule);
-    font:400 0.875rem/1.62 var(--sans); color:var(--muted);
-  }
-  footer p{margin:0 0 0.4rem; max-width:38rem}
-
-  @media (max-width:600px){
-    body{font-size:17px}
-    header{padding-top:3rem}
-    h1{margin-top:2rem}
-    h2{margin-top:3rem}
-    .specimen,.price-block{padding:1.2rem 1.15rem}
-    .verdict{margin-left:0; flex-basis:100%}
+  @media (max-width:900px){
+    .hero .inner,.split,.price .inner,footer .inner{grid-template-columns:1fr;gap:36px}
+    .hero .inner{padding-top:52px;padding-bottom:52px}
+    section .inner{padding:44px 24px}
+    .inner{padding:0 24px}
+    .price .inner{padding:44px 24px}
+    .price .amount{font-size:48px}
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-
-  <header>
-    <div class="mark">Transparency Check</div>
-    <div class="mark-rule"></div>
-    <h1>Most firms are nearly compliant. The gap is usually one paragraph.</h1>
-    <p class="lede">A fixed-fee check of your firm&rsquo;s website against the SRA Transparency
-    Rules — what is missing, where, and the wording to fix it.</p>
-  </header>
-
-  <main>
-
-    <h2>Why it matters</h2>
-    <p>The SRA requires firms to publish price and service information for nine specified areas of
-    work, together with a complaints procedure telling clients how and when they may approach the
-    Legal Ombudsman.</p>
-    <p>A year after the rules took effect, <strong>three quarters of firm websites were not
-    compliant</strong>. The SRA runs periodic sweeps and has issued hundreds of warnings and a
-    number of fixed penalties. A first finding carries a <strong>£750</strong> penalty; £1,500
-    after that.</p>
-
-    <h2>What a finding looks like</h2>
-    <p>Every finding quotes your own wording and links the exact page, so you can check it in ten
-    seconds rather than taking my word for it. A real example, anonymised:</p>
-
-    <div class="specimen">
-      <div class="specimen-head">
-        <span class="rule-id">Rule 2.1 — complaints procedure</span>
-        <span class="verdict">Not met</span>
-      </div>
-      <p>The complaints page explains how to complain to the firm and refers the reader to the SRA,
-      but never mentions the Legal Ombudsman or the time limits for approaching them.</p>
-      <p class="evidence">On the firm&rsquo;s complaints page —
-      &ldquo;Solicitors Regulation Authority&rdquo; appears <b>twice</b>;
-      &ldquo;Legal Ombudsman&rdquo; appears <b>no times</b>.</p>
-    </div>
-
-    <p>That firm was otherwise in good order — its published fees and hourly rates met Rule 1.4.
-    The report says so, because you should not spend an afternoon fixing things that are already
-    right.</p>
-
-    <h2>What you get</h2>
-    <ul>
-      <li>Your site read against Rules 1.3, 1.4, 2.1 and 4</li>
-      <li>Each gap quoted and linked, with suggested replacement wording</li>
-      <li>A list of what you already do correctly</li>
-      <li>Judgement calls flagged as judgement calls, never asserted as breaches</li>
-    </ul>
-
-    <div class="price-block">
-      <div class="fee">£149</div>
-      <p class="fee-note">One firm, one fixed fee. If the check finds nothing that needs changing,
-      there is nothing to pay.</p>
-    </div>
-
-    <h2>How it is done</h2>
-    <p>The reading is largely automated — that is what makes a fixed fee possible at this price.
-    Every finding is then confirmed by hand before it reaches you. Anything that cannot be
-    confirmed is reported as worth checking rather than as a breach, because a compliance report
-    that cries wolf is worse than no report at all.</p>
-
-    <div class="contact">
-      <p>Send me your firm&rsquo;s website address and I will reply with what I find.</p>
-      <a href="mailto:liam@transparencycheck.co.uk">liam@transparencycheck.co.uk</a>
-    </div>
-
-  </main>
-
-  <footer>
-    <p>This is not legal advice and I am not a solicitor. It is a careful reading of a public
-    website against a published rulebook.</p>
-    <p>Transparency Check is independent. It is not affiliated with, endorsed by, or connected to
-    the Solicitors Regulation Authority or the Legal Ombudsman.</p>
-    <p>Liam Lacey · <a href="mailto:liam@transparencycheck.co.uk">liam@transparencycheck.co.uk</a></p>
-  </footer>
-
+<div class="topbar bleed">
+  <div class="inner">
+    <span class="brand">Transparency Check</span>
+    <a href="mailto:liam@transparencycheck.co.uk">liam@transparencycheck.co.uk</a>
+  </div>
 </div>
+
+<div class="hero bleed">
+  <div class="inner">
+    <div>
+      <h1>Three quarters of law firm websites failed the SRA transparency check.</h1>
+      <p>We read your site against the rules and tell you exactly what is missing, on which page,
+      with wording you can paste in. Most firms need one or two changes. Some need none.</p>
+    </div>
+    <div class="facts">
+      <dl>
+        <dt>Services that must publish prices</dt><dd>9</dd>
+        <dt>Penalty, first finding</dt><dd>£750</dd>
+        <dt>Penalty thereafter</dt><dd>£1,500</dd>
+        <dt>Our fee, per firm</dt><dd>£149</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="inner">
+    <p class="kicker">What we check</p>
+    <div class="split">
+      <div>
+        <h2>Four rules, read line by line</h2>
+        <p>The SRA requires published price and service information for nine areas of work, and a
+        complaints procedure that names the Legal Ombudsman. The requirements are detailed. Firms
+        rarely fail all of them. They often fail one.</p>
+        <p>The SRA checks too. It sweeps firm websites periodically and has issued hundreds of
+        warnings alongside a number of fixed penalties.</p>
+      </div>
+      <table>
+        <tr><th>Rule</th><th>Requirement</th></tr>
+        <tr>
+          <td class="rule-no">1.3</td>
+          <td><p>Prices published for conveyancing, probate, immigration, motoring offences,
+          employment tribunals, debt recovery and licensing</p></td>
+        </tr>
+        <tr>
+          <td class="rule-no">1.4</td>
+          <td><p>Each price stating total or range, basis of charges, staff qualifications,
+          disbursements, VAT, key stages and timescales</p></td>
+        </tr>
+        <tr>
+          <td class="rule-no">2.1</td>
+          <td><p>Complaints procedure covering how and when to approach the Legal Ombudsman and
+          the SRA</p></td>
+        </tr>
+        <tr>
+          <td class="rule-no">4</td>
+          <td><p>SRA authorisation number and the digital badge displayed</p></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="kicker">A finding from a real review</p>
+    <h2>Every point is quoted and linked, so you can verify it yourself</h2>
+    <p style="margin-bottom:28px">This firm is anonymised. Its report ran to two findings and six
+    passes.</p>
+
+    <div class="report">
+      <div class="report-head">
+        <span class="id">Rule 2.1 &middot; Complaints procedure</span>
+        <span class="badge fail">Not met</span>
+      </div>
+      <div class="report-body">
+        <p>The complaints page sets out how to complain to the firm and points the reader to the
+        SRA. It does not mention the Legal Ombudsman, or the time limits for going to them.</p>
+        <div class="count">
+          <span>&ldquo;Solicitors Regulation Authority&rdquo; <b>2 mentions</b></span>
+          <span>&ldquo;Legal Ombudsman&rdquo; <b>0 mentions</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="report" style="margin-top:18px">
+      <div class="report-head">
+        <span class="id">Rule 1.4(b) &middot; Basis of charges</span>
+        <span class="badge pass">Met</span>
+      </div>
+      <div class="report-body">
+        <p>Fixed fees and hourly rates are published for debt recovery, and hourly rates for
+        employment tribunal claims. No change needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="price bleed">
+  <div class="inner">
+    <div class="amount">£149</div>
+    <div>
+      <h2>One firm, one fixed fee</h2>
+      <p>If the review finds nothing that needs changing, there is nothing to pay. Send your
+      website address to
+      <a href="mailto:liam@transparencycheck.co.uk">liam@transparencycheck.co.uk</a> and you will
+      have the findings back within two working days.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="kicker">How the review is done</p>
+    <div class="split">
+      <div>
+        <h2>Automated reading, checked by hand</h2>
+        <p>Software reads the site first. That is what keeps the fee at £149 rather than a
+        consultancy day rate.</p>
+        <p>Then every finding is verified against the live page before it goes anywhere near you.
+        During testing the software produced five findings that turned out to be wrong. All five
+        were caught at this step. None reached a firm.</p>
+        <p>Anything that cannot be verified is reported as worth checking, not as a breach.</p>
+      </div>
+      <ol class="steps">
+        <li>Your site is crawled and every page bearing on the rules is collected.</li>
+        <li>Each requirement is assessed against what those pages actually say.</li>
+        <li>Findings are confirmed by hand against the live page, and unverifiable ones are
+        downgraded.</li>
+        <li>You get the report: what fails, what passes, and replacement wording for the gaps.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer class="bleed">
+  <div class="inner">
+    <div>
+      <p>This is not legal advice and I am not a solicitor. The review is a reading of a public
+      website against a published rulebook.</p>
+      <p>Transparency Check is independent. It has no affiliation with, endorsement from, or
+      connection to the Solicitors Regulation Authority or the Legal Ombudsman.</p>
+    </div>
+    <div>
+      <p><strong>Liam Lacey</strong></p>
+      <p><a href="mailto:liam@transparencycheck.co.uk">liam@transparencycheck.co.uk</a></p>
+      <p>transparencycheck.co.uk</p>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
