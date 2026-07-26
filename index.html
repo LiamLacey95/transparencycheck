@@ -5,81 +5,201 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Transparency Check — SRA website compliance for small law firms</title>
 <meta name="description" content="A fixed-fee check of your firm's website against the SRA Transparency Rules. £149, and nothing to pay if there is nothing to find.">
+<meta name="color-scheme" content="light">
 <style>
-  :root { --ink:#16181f; --muted:#5d6472; --line:#e3e6ec; --accent:#1d4ed8; --paper:#fbfcfe; }
-  * { box-sizing:border-box; }
-  body { margin:0; background:var(--paper); color:var(--ink);
-         font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,serif;
-         -webkit-font-smoothing:antialiased; }
-  .wrap { max-width:660px; margin:0 auto; padding:64px 24px 96px; }
-  h1 { font-size:32px; line-height:1.25; margin:0 0 8px; letter-spacing:-0.02em; }
-  h2 { font-size:19px; margin:44px 0 12px; letter-spacing:-0.01em; }
-  .lede { color:var(--muted); font-size:19px; margin:0 0 40px; }
-  p { margin:0 0 16px; }
-  ul { margin:0 0 16px; padding-left:22px; }
-  li { margin-bottom:7px; }
-  .box { border:1px solid var(--line); border-radius:10px; padding:20px 22px; background:#fff;
-         margin:28px 0; }
-  .price { font-size:26px; font-weight:600; letter-spacing:-0.02em; }
-  .muted { color:var(--muted); }
-  a { color:var(--accent); }
-  footer { margin-top:56px; padding-top:22px; border-top:1px solid var(--line);
-           color:var(--muted); font-size:15px; }
-  code { background:#f1f3f7; padding:1px 5px; border-radius:4px; font-size:14px; }
+  :root{
+    --ink:#10151f;
+    --navy:#1b2a4a;
+    --brass:#8c6f3f;
+    --paper:#fbfaf7;
+    --paper-2:#f5f2ea;
+    --muted:#4a5163;
+    --rule:#ded8cc;
+    --rule-soft:#e9e4d9;
+    --flag:#8a2f2a;
+    --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font:400 18px/1.68 var(--serif);
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:41rem; margin:0 auto; padding:0 1.5rem}
+
+  /* ---- masthead ---------------------------------------------------- */
+  header{padding:4.5rem 0 0}
+  .mark{
+    font:600 0.875rem/1 var(--sans);
+    letter-spacing:0.19em; text-transform:uppercase; color:var(--navy);
+  }
+  .mark-rule{
+    height:2px; background:var(--brass); margin:0.9rem 0 0;
+    transform-origin:left center; transform:scaleX(1);
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .mark-rule{animation:draw 1100ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes draw{from{transform:scaleX(0)} to{transform:scaleX(1)}}
+  }
+
+  h1{
+    font:400 clamp(2.2rem,5.6vw,3.1rem)/1.14 var(--serif);
+    letter-spacing:-0.022em; margin:2.6rem 0 0; text-wrap:balance;
+  }
+  .lede{
+    font-size:1.28rem; color:var(--muted); margin:1.1rem 0 0; max-width:34rem;
+    text-wrap:pretty;
+  }
+
+  h2{
+    font:600 0.875rem/1.3 var(--sans); letter-spacing:0.13em; text-transform:uppercase;
+    color:var(--brass); margin:4rem 0 1rem;
+  }
+  h2 + p, h2 + ul, h2 + .specimen{margin-top:0}
+
+  p{margin:0 0 1.1rem; max-width:38rem}
+  ul{margin:0 0 1.1rem; padding-left:1.15rem; max-width:38rem}
+  li{margin-bottom:0.5rem}
+  li::marker{color:var(--brass)}
+  strong{font-weight:600}
+  a{color:var(--navy); text-underline-offset:3px; text-decoration-thickness:1px}
+  a:hover{color:var(--brass)}
+  a:focus-visible{outline:2px solid var(--navy); outline-offset:3px; border-radius:2px}
+
+  main{padding-bottom:1rem}
+
+  /* ---- the specimen finding ---------------------------------------- */
+  .specimen{
+    border:1px solid var(--rule); background:#fff; border-radius:3px;
+    padding:1.4rem 1.5rem; margin:0 0 1.3rem;
+    box-shadow:0 2px 10px rgba(16,21,31,.05);
+  }
+  .specimen-head{
+    display:flex; flex-wrap:wrap; gap:0.6rem 1rem; align-items:baseline;
+    padding-bottom:0.8rem; border-bottom:1px solid var(--rule-soft); margin-bottom:0.9rem;
+  }
+  .rule-id{font:600 0.875rem/1 var(--sans); letter-spacing:0.06em; text-transform:uppercase; color:var(--navy)}
+  .verdict{
+    font:600 0.875rem/1 var(--sans); letter-spacing:0.11em; text-transform:uppercase;
+    color:var(--flag); margin-left:auto;
+  }
+  .specimen p{margin:0}
+  .evidence{
+    font:400 0.875rem/1.62 var(--sans); color:var(--muted);
+    margin:0.75rem 0 0; padding-left:0.9rem; border-left:1px solid var(--brass);
+  }
+  .evidence b{color:var(--ink); font-weight:600}
+
+  /* ---- price ------------------------------------------------------- */
+  .price-block{
+    margin:1.4rem 0 0; padding:1.5rem 1.6rem;
+    background:var(--paper-2); border:1px solid var(--rule); border-radius:3px;
+  }
+  .fee{font:400 2.3rem/1 var(--serif); letter-spacing:-0.02em; color:var(--navy)}
+  .fee-note{margin:0.6rem 0 0; font-size:0.875rem; color:var(--muted)}
+
+  .contact{
+    margin:3.2rem 0 0; padding:1.6rem 0 0; border-top:2px solid var(--brass);
+  }
+  .contact a{font-size:1.28rem; font-weight:600}
+
+  footer{
+    margin:4rem 0 0; padding:1.4rem 0 3.5rem; border-top:1px solid var(--rule);
+    font:400 0.875rem/1.62 var(--sans); color:var(--muted);
+  }
+  footer p{margin:0 0 0.4rem; max-width:38rem}
+
+  @media (max-width:600px){
+    body{font-size:17px}
+    header{padding-top:3rem}
+    h1{margin-top:2rem}
+    h2{margin-top:3rem}
+    .specimen,.price-block{padding:1.2rem 1.15rem}
+    .verdict{margin-left:0; flex-basis:100%}
+  }
 </style>
 </head>
 <body>
+
 <div class="wrap">
 
-  <h1>Transparency Check</h1>
-  <p class="lede">A fixed-fee check of your firm's website against the SRA Transparency Rules.</p>
+  <header>
+    <div class="mark">Transparency Check</div>
+    <div class="mark-rule"></div>
+    <h1>Most firms are nearly compliant. The gap is usually one paragraph.</h1>
+    <p class="lede">A fixed-fee check of your firm&rsquo;s website against the SRA Transparency
+    Rules — what is missing, where, and the wording to fix it.</p>
+  </header>
 
-  <p>The SRA requires firms to publish price and service information for nine specified areas of
-  work, along with a complaints procedure that tells clients how and when to go to the Legal
-  Ombudsman. The rules are detailed, and it is easy to be most of the way there without being all
-  of the way there.</p>
+  <main>
 
-  <p>The SRA checks. It runs periodic sweeps of firm websites, and has issued hundreds of warnings
-  and a number of fixed penalties. The penalty for a transparency breach is <strong>£750</strong>
-  for a first finding and £1,500 after that.</p>
+    <h2>Why it matters</h2>
+    <p>The SRA requires firms to publish price and service information for nine specified areas of
+    work, together with a complaints procedure telling clients how and when they may approach the
+    Legal Ombudsman.</p>
+    <p>A year after the rules took effect, <strong>three quarters of firm websites were not
+    compliant</strong>. The SRA runs periodic sweeps and has issued hundreds of warnings and a
+    number of fixed penalties. A first finding carries a <strong>£750</strong> penalty; £1,500
+    after that.</p>
 
-  <h2>What you get</h2>
-  <ul>
-    <li>Every page of your site read against Rules 1.3, 1.4, 2.1 and 4</li>
-    <li>A list of what is missing, quoting your own wording and linking the exact page</li>
-    <li>Suggested replacement wording you can paste in</li>
-    <li>A note of what you already do correctly, so you are not fixing things that are fine</li>
-  </ul>
+    <h2>What a finding looks like</h2>
+    <p>Every finding quotes your own wording and links the exact page, so you can check it in ten
+    seconds rather than taking my word for it. A real example, anonymised:</p>
 
-  <div class="box">
-    <div class="price">£149</div>
-    <p class="muted" style="margin:6px 0 0">One firm, one fixed fee. If the check finds nothing
-    that needs changing, there is nothing to pay.</p>
-  </div>
+    <div class="specimen">
+      <div class="specimen-head">
+        <span class="rule-id">Rule 2.1 — complaints procedure</span>
+        <span class="verdict">Not met</span>
+      </div>
+      <p>The complaints page explains how to complain to the firm and refers the reader to the SRA,
+      but never mentions the Legal Ombudsman or the time limits for approaching them.</p>
+      <p class="evidence">On the firm&rsquo;s complaints page —
+      &ldquo;Solicitors Regulation Authority&rdquo; appears <b>twice</b>;
+      &ldquo;Legal Ombudsman&rdquo; appears <b>no times</b>.</p>
+    </div>
 
-  <h2>How it works</h2>
-  <p>The check is largely automated — that is what makes a fixed fee possible at this price. Every
-  finding is then read and confirmed by hand before it reaches you, because a compliance report
-  that cries wolf is worse than no report at all. Findings that cannot be confirmed are reported
-  as "worth checking", not as breaches.</p>
+    <p>That firm was otherwise in good order — its published fees and hourly rates met Rule 1.4.
+    The report says so, because you should not spend an afternoon fixing things that are already
+    right.</p>
 
-  <h2>What this is not</h2>
-  <p>This is not legal advice, and I am not a solicitor. It is a careful reading of a public
-  website against a published rulebook. Where something is a judgement call, it is flagged as one
-  rather than asserted. Nothing here is affiliated with or endorsed by the Solicitors Regulation
-  Authority.</p>
+    <h2>What you get</h2>
+    <ul>
+      <li>Your site read against Rules 1.3, 1.4, 2.1 and 4</li>
+      <li>Each gap quoted and linked, with suggested replacement wording</li>
+      <li>A list of what you already do correctly</li>
+      <li>Judgement calls flagged as judgement calls, never asserted as breaches</li>
+    </ul>
 
-  <h2>Get in touch</h2>
-  <p>Email <a href="mailto:liam@transparencycheck.co.uk">liam@transparencycheck.co.uk</a> with your
-  firm's website and I will reply with what I find.</p>
+    <div class="price-block">
+      <div class="fee">£149</div>
+      <p class="fee-note">One firm, one fixed fee. If the check finds nothing that needs changing,
+      there is nothing to pay.</p>
+    </div>
+
+    <h2>How it is done</h2>
+    <p>The reading is largely automated — that is what makes a fixed fee possible at this price.
+    Every finding is then confirmed by hand before it reaches you. Anything that cannot be
+    confirmed is reported as worth checking rather than as a breach, because a compliance report
+    that cries wolf is worse than no report at all.</p>
+
+    <div class="contact">
+      <p>Send me your firm&rsquo;s website address and I will reply with what I find.</p>
+      <a href="mailto:liam@transparencycheck.co.uk">liam@transparencycheck.co.uk</a>
+    </div>
+
+  </main>
 
   <footer>
-    Transparency Check &middot; Liam Lacey &middot;
-    <a href="mailto:liam@transparencycheck.co.uk">liam@transparencycheck.co.uk</a><br>
-    An independent service. Not affiliated with the Solicitors Regulation Authority or the Legal
-    Ombudsman.
+    <p>This is not legal advice and I am not a solicitor. It is a careful reading of a public
+    website against a published rulebook.</p>
+    <p>Transparency Check is independent. It is not affiliated with, endorsed by, or connected to
+    the Solicitors Regulation Authority or the Legal Ombudsman.</p>
+    <p>Liam Lacey · <a href="mailto:liam@transparencycheck.co.uk">liam@transparencycheck.co.uk</a></p>
   </footer>
 
 </div>
+
 </body>
 </html>
